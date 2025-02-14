@@ -33,7 +33,7 @@ class _Product1State extends State<Product1> {
 
   Widget grid(BuildContext ctx , int index) {
     var pd1 = ['สีดำ','สีขาว','สีแดง','สีชมพู','สีม่วง','สีฟ้า','สีน้ำตาล','สีเหลือง','สีเทา','สีเขียว',];
-    var price = 119;
+    var price = 90;
     var img = ['images/1.1.jpg','images/1.2.jpg','images/1.3.jpg','images/1.4.jpg','images/1.5.jpg','images/1.6.jpg','images/1.7.jpg','images/1.8.jpg','images/1.9.jpg','images/1.10.jpg',];
     return GridTile(
       child:InkWell(child: Image.asset(img[index],fit:BoxFit.cover),onTap:()=>MSB(ctx, index, pd1[index], price, img[index]) ,) ,
@@ -56,7 +56,7 @@ class _Product1State extends State<Product1> {
     children: [
     Text('ข้อมูลสินค้า \n\n',style: TextStyle(fontSize: 16),),
     Image.asset(img),
-    Text('\nชื่อสินค้า : หมวกแก๊ป${pd} \n  น้ำหนัก : 500 กรัม \n  ขนาด	: 54-58 cm. \n  ราคา : ${price}'),]),
+    Text('\nชื่อสินค้า : หมวกแก๊ป${pd} \nขนาด	: 54-58 cm. \nน้ำหนัก : 500 กรัม \nราคา : ${price}'),]),
     actions: [TextButton(onPressed: ()=>Navigator.of(ctx).pop(), child: Text('ย้อนกลับ'))],
   ),); }
 }

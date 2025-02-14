@@ -33,7 +33,7 @@ class _Product2State extends State<Product2> {
 
   Widget grid(BuildContext ctx , int index) {
     var pd1 = ['สีคลีม','สีดำ','สีน้ำเงิน','สีขาว','สีชมพู',];
-    var price = 70;
+    var price = 105;
     var img = ['images/2.1.png','images/2.2.png','images/2.3.png','images/2.4.png','images/2.5.png',];
     return GridTile(
       child:InkWell(
@@ -58,7 +58,7 @@ class _Product2State extends State<Product2> {
     children: [
     Text('ข้อมูลสินค้า \n\n',style: TextStyle(fontSize: 16),),
     Image.asset(img),
-    Text('\nชื่อสินค้า : หมวกบีนนี่${pd} \n  ขนาด	: Free size \n  ราคา : ${price}'),]),
+    Text('\nชื่อสินค้า : หมวกบีนนี่${pd} \nขนาด	: Free size  \nน้ำหนัก : 600 กรัม \nราคา : ${price}'),]),
     actions: [TextButton(onPressed: ()=>Navigator.of(ctx).pop(), child: Text('ย้อนกลับ'))],
   ),); 
   
