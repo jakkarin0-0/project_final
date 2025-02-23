@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_shop/data_save.dart';
 
 class Product2 extends StatefulWidget {
   const Product2({super.key});
@@ -32,20 +33,28 @@ class _Product2State extends State<Product2> {
   }
 
   Widget grid(BuildContext ctx , int index) {
-    var pd1 = ['สีคลีม','สีดำ','สีน้ำเงิน','สีขาว','สีชมพู',];
-    var price = 105;
+    var pd2 = ['สีคลีม','สีดำ','สีน้ำเงิน','สีขาว','สีชมพู',];
+    int price = 105;
+    var unit = 1;
     var img = ['images/2.1.png','images/2.2.png','images/2.3.png','images/2.4.png','images/2.5.png',];
     return GridTile(
       child:InkWell(
         child: Image.asset(img[index],fit:BoxFit.cover),
-        onTap:()=>MSB(ctx, index, pd1[index], price, img[index]) ,) ,
+        onTap:()=>MSB(ctx, index, pd2[index], price, img[index]) ,) ,
       footer: GridTileBar(
         backgroundColor: Colors.black45,
-        title: Text(pd1[index]),
+        title: Text(pd2[index]),
         subtitle: Text('ราคา $price บาท'),
         trailing: InkWell(
           child: const Icon(Icons.add,size: 32,color: Colors.amber,),
-          onTap: () => {})
+          onTap: () {
+             cart_icon.addCart();
+             add_pro.product.add('หมวกบีนนี่ ${pd2[index]}');
+               //unit1[index] = unit1[index]+1;
+              add_pro.units.add(unit);
+              add_pro.price.add(price);
+              add(context);
+          })
       ),
 
       );
@@ -64,4 +73,15 @@ class _Product2State extends State<Product2> {
   
   }
   
+  void add(BuildContext ctx, ) {
+    showDialog(context: ctx, builder:(context) => AlertDialog(
+    content:Column( 
+    mainAxisSize: MainAxisSize.min,
+    children: [
+    Text('เพิ่มสินค้า\n',style: TextStyle(fontSize: 20),),
+    Image.asset('images/true.png'),
+    Center(child: Text('ได้เพิ่มสินค้าเข้าตะกร้าแล้ว')),]),
+    
+    actions: [TextButton(onPressed: ()=>Navigator.of(ctx).pop(), child: Text('ย้อนกลับ'))],
+  ),); }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_shop/data_save.dart';
 
 class Product3 extends StatefulWidget {
   const Product3({super.key});
@@ -32,20 +33,28 @@ class _Product3State extends State<Product3> {
   }
 
   Widget grid(BuildContext ctx , int index) {
-    var pd1 = ['สีดำ','สีขาว','สีชมพู','สีฟ้า','สีเขียว','สีแดง','สีกรมท่า','สีม่วง'];
-    var price = 95;
+    var pd3 = ['สีดำ','สีขาว','สีชมพู','สีฟ้า','สีเขียว','สีแดง','สีกรมท่า','สีม่วง'];
+    int price = 95;
+    var unit =1;
     var img = ['images/3.1.jpg','images/3.2.jpg','images/3.3.jpg','images/3.4.jpg','images/3.5.jpg','images/3.6.jpg','images/3.7.jpg','images/3.8.jpg'];
     return GridTile(
       child:InkWell(
         child: Image.asset(img[index],fit:BoxFit.cover),
-        onTap:()=>MSB(ctx, index, pd1[index], price, img[index]) ,) ,
+        onTap:()=>MSB(ctx, index, pd3[index], price, img[index]) ,) ,
       footer: GridTileBar(
         backgroundColor: Colors.black45,
-        title: Text(pd1[index]),
+        title: Text(pd3[index]),
         subtitle: Text('ราคา $price บาท'),
         trailing: InkWell(
           child: const Icon(Icons.add,size: 32,color: Colors.amber,),
-          onTap: () => {})
+          onTap: () {
+             cart_icon.addCart();
+            add_pro.product.add('หมวกบักเก็ต ${pd3[index]}');
+               //unit1[index] = unit1[index]+1;
+              add_pro.units.add(unit);
+              add_pro.price.add(price);
+                add(context);
+          })
       ),
 
       );
@@ -63,4 +72,16 @@ class _Product3State extends State<Product3> {
   ),); 
   
   }
+
+  void add(BuildContext ctx, ) {
+    showDialog(context: ctx, builder:(context) => AlertDialog(
+    content:Column( 
+    mainAxisSize: MainAxisSize.min,
+    children: [
+    Text('เพิ่มสินค้า\n',style: TextStyle(fontSize: 20),),
+    Image.asset('images/true.png'),
+    Center(child: Text('ได้เพิ่มสินค้าเข้าตะกร้าแล้ว')),]),
+    
+    actions: [TextButton(onPressed: ()=>Navigator.of(ctx).pop(), child: Text('ย้อนกลับ'))],
+  ),); }
 }
